@@ -17,7 +17,7 @@ public class FornecedorService {
         return fornecedorRepository.findAllByAtivoTrue();
     }
 
-    public FornecedorEntity listarFornecedororId(Long id){
+    public FornecedorEntity listarFornecedorPorId(Long id){
         return fornecedorRepository.getReferenceById(id);
     }
 

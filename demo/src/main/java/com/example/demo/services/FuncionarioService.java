@@ -17,7 +17,7 @@ public class FuncionarioService {
         return funcionarioRepository.findAllByAtivoTrue();
     }
 
-    public FuncionarioEntity listarFuncionarioorId(Long id){
+    public FuncionarioEntity listarFuncionarioPorId(Long id){
         return funcionarioRepository.getReferenceById(id);
     }
 

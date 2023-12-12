@@ -17,7 +17,7 @@ public class PedidoService {
         return pedidoRepository.findAllByAtivoTrue();
     }
 
-    public PedidoEntity listarPedidoorId(Long id){
+    public PedidoEntity listarPedidoPorId(Long id){
         return pedidoRepository.getReferenceById(id);
     }
 
