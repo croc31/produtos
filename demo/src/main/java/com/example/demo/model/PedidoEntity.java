@@ -26,4 +26,16 @@ public class PedidoEntity {
     @JoinTable(name="produto_pedido",  joinColumns = @JoinColumn(name="pedido_fk"), inverseJoinColumns = @JoinColumn(name="produto_fk"))
     private List<ProdutosEntity> produtos ;
 
+    @ManyToOne //Muitos pedidos podem ser feitos por um funcionario
+    @JoinColumn(name="funcionario_id")
+    private FuncionarioEntity funcionario;
+
+    public PedidoEntity(PedidoEntity pedido){
+        this.pedido_id = pedido.pedido_id;
+        this.produtos = pedido.produtos;
+        this.funcionario = pedido.funcionario;
+    }
+    public void adicionaProduto(long id){
+         
+    }
 }

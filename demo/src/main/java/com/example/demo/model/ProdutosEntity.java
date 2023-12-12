@@ -25,7 +25,7 @@ import lombok.Setter;
 public class ProdutosEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull(message = "O produto precisa de um id!")
-    private  long id ;
+    private  long produto_id ;
     @NotBlank(message = "O produto precisa de um nome!")
     private  String nome_produto;
     @NotBlank(message = "O produto precisa de uma descricao!")
@@ -33,13 +33,16 @@ public class ProdutosEntity {
     private  double preco_produto = 0;
     private  String data_validade;
     private  int estoque = 0;
-    private  String fornecedor;
     @Min(0)
     @Max(1)
     private  int ativo;
     
     @ManyToMany(mappedBy = "produtos")
     private List<PedidoEntity> pedidos;
+
+    @ManyToOne //Muitos produtos podem ser fornecidos por um fonecedor
+    @JoinColumn(name="fornecedor_id")
+    private FornecedorEntity fornecedor;
 
     public ProdutosEntity(ProdutosEntity dados){
         this.ativo = 1;
@@ -48,7 +51,6 @@ public class ProdutosEntity {
         this.preco_produto = dados.preco_produto;
         this.data_validade = dados.data_validade;
         this.estoque = dados.estoque;
-        this.fornecedor = dados.fornecedor;
     }
 
     public void atualizarDados(ProdutosAtualizar dados) {
@@ -62,10 +64,8 @@ public class ProdutosEntity {
             this.data_validade = dados.data_validade();
         }if(dados.estoque() != 0){
             this.estoque = dados.estoque();
-        }if(dados.fornecedor() != null){
-            this.fornecedor = dados.fornecedor();
         }if(dados.ativo() != -1){
-            this.fornecedor = dados.fornecedor();
+            this.ativo = dados.ativo();
         }
     }
 
@@ -73,4 +73,11 @@ public class ProdutosEntity {
         this.ativo = 0;
     }
 
+    public void compra(){
+        estoque --;
+    }
+
+    public void devolucao(){
+        estoque ++;
+    }
 }
