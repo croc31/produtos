@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.ProdutoRepository;
+import com.example.demo.Repository.ProdutoRepository;
 import com.example.demo.model.ProdutosAtualizar;
 import com.example.demo.model.ProdutosEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
