@@ -31,4 +31,10 @@ public class FornecedorService {
     public void deletarFornecedor(Long id){
         fornecedorRepository.deleteById(id);
     }
+
+    @Transactional
+    public void atualizarFornecedor(FornecedorEntity dados){
+        FornecedorEntity entity = fornecedorRepository.getReferenceById(dados.getFornecedor_id());
+        entity.atualizarDados(dados);
+    }
 }

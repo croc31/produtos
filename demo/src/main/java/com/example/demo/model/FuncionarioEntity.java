@@ -39,5 +39,13 @@ public class FuncionarioEntity {
         this.funcionario_id = funcionario.funcionario_id;
         this.pedidos = funcionario.pedidos;
     }
-
+    public void atualizarDados(FuncionarioEntity dados) {
+        if(dados.getCpf() != null){
+            this.cpf = dados.getCpf();
+        }if(dados.getName() != null){
+            this.name = dados.getName();
+        }if(dados.getPedidos() != null){
+            this.pedidos = dados.getPedidos();
+        }
+    }
 }

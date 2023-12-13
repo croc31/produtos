@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.PedidoEntity;
-import com.example.demo.model.ProdutosAtualizar;
-import com.example.demo.model.ProdutosEntity;
 import com.example.demo.services.PedidoService;
-import com.example.demo.services.ProdutoService;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -53,5 +50,12 @@ public class PedidoController {
     public String DeleteProduct (@PathVariable Long id){
         pedidoService.deletarPedido(id);
         return "Pedido Deletado";
+    }
+
+    @PutMapping
+    @Transactional 
+    public String putPedido (@RequestBody @Valid PedidoEntity json){
+        pedidoService.atualizarPedido(json);
+        return "Pedido modificado";
     }
 }

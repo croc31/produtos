@@ -32,4 +32,11 @@ public class FornecedorEntity {
         this.name = fornecedor.name;
         this.produtos = fornecedor.produtos;
     }
+    public void atualizarDados(FornecedorEntity dados) {
+        if(dados.getName() != null){
+            this.name = dados.getName();
+        }if(dados.getProdutos() != null){
+            this.produtos = dados.getProdutos();
+        }
+    }
 }

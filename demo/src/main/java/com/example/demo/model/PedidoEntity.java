@@ -35,6 +35,15 @@ public class PedidoEntity {
         this.produtos = pedido.produtos;
         this.funcionario = pedido.funcionario;
     }
+
+    public void atualizarDados(PedidoEntity dados) {
+        if(dados.getFuncionario() != null){
+            this.funcionario = dados.getFuncionario();
+        }if(dados.getProdutos() != null){
+            this.produtos = dados.getProdutos();
+        }
+    }
+
     public void adicionaProduto(long id){
          
     }

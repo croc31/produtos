@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.demo.Repository.FuncionarioRepository;
-
 import com.example.demo.model.FuncionarioEntity;
 
 import jakarta.transaction.Transactional;
@@ -30,5 +29,11 @@ public class FuncionarioService {
     @Transactional
     public void deletarFuncionario(Long id){
         funcionarioRepository.deleteById(id);
+    }
+
+     @Transactional
+    public void atualizarFuncionario(FuncionarioEntity dados){
+        FuncionarioEntity entity = funcionarioRepository.getReferenceById(dados.getFuncionario_id());
+        entity.atualizarDados(dados);
     }
 }
